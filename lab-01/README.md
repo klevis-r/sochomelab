@@ -72,7 +72,7 @@ eth0  ethernet  connecting (getting IP configuration)
 
 This means Kali was sending DHCP requests and waiting for a reply that never came.
 
-_(TODO: how you found the cause, i.e. tcpdump on the firewall, and the fix, i.e. Kali's adapter name.)_
+_(TODO: how I found the cause, tcpdump on the firewall, and the fix, i.e. Kali's adapter name.)_
 
 ## Result
 
@@ -80,4 +80,3 @@ _(TODO: how you found the cause, i.e. tcpdump on the firewall, and the fix, i.e.
 
 After the fix, `ip a` shows `inet 192.168.10.142/24`. Kali now has an IPv4 address, marked "dynamic" with a 24-hour lease, which shows it came from the firewall's DHCP server.
 
-TODO: TCPDUMP+ ADAPTER NAMEFIX
