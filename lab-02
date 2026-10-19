@@ -1,0 +1,11 @@
+#Day 2
+Today,  im going to build a small pretend company on my VM that i'll be attacking, and then catching that attack. 
+I installed an Ubuntu Server from ubuntu.com/download/server, the official ubuntu site. Again, I selected the .iso file for the same reason as to why I downloaded the .iso file for OPNsense, VirtualBox boots it as if it were an installations DVD.
+Im using the Ubuntu Server to act as the company room. It'll be the victim of attacks, run SSH which is the shell, record login attempts and i'll also be breaking it.
+
+#Setting it up
+When creating the VM, I allocated 2049 MB of CPU speed aswell as 2 cores and 25gb of VDI, which is a virtual storage. 25gb is necassary in the future, when I install some tools.
+On the network settings, I adapter 1 as Internal network and changed its name to company-room.
+I made sure that I changed the name so that the issue from yesterday, Kali's name, doesnt happen again.
+I set the language to English UK and selected the standard option for installing the server.
+Next up, the network config. This is where todays issue occured. enp0s3 ( en = Ethernet | p0 = pci(peripheral component interconnect *i have no clue what that is* | s3 = slot 3) was not being set any IP. The autoconfiguration failing also meant that the DHCP server had failed
