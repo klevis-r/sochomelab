@@ -1,6 +1,6 @@
 # Lab 02: Building the company server
 
-Today, I'm going to build a small pretend company on my VM that I'll be attacking, and then catching that attack.
+Today, I'm going to build a small pretend company on my homelab that I'll be attacking, and then catching that attack.
 
 I installed Ubuntu Server from ubuntu.com/download/server, the official Ubuntu site. Again, I selected the .iso file for the same reason I downloaded the .iso for OPNsense: VirtualBox boots it as if it were an installation DVD.
 
@@ -26,4 +26,22 @@ Next up, the network configuration. This is where today's issue occurred. enp0s3
 
 Without an address I couldn't continue properly, as Ubuntu wouldn't be able to download anything during the install.
 
-I set IPv4 back to Automatic (DHCP) to retry, but it didn't work. I then noticed the OPNsense VM wasn't even running. No DHCP requests were being answered because there was no DHCP server switched on. I started OPNsense, and still nothing happened. I guessed that because I had left it frozen in a saved state, its clock might be wrong and causing problems, so I restarted OPNsense, reset Ubuntu's network configuration to DHCP (Automatic), and still nothing happened. I left it for the next day.
+I set IPv4 back to Automatic (DHCP) to retry, but it didn't work. I then noticed the OPNsense VM wasn't even running. No DHCP requests were being answered because there was no DHCP server switched on. I started OPNsense, and still nothing happened.
+
+I guessed that because I had left it frozen in a saved state, its clock might be wrong and causing problems. So I restarted OPNsense and reset Ubuntu's network configuration to DHCP (Automatic), and still nothing happened.
+
+I tried running `tcpdump -ni em2 port 67 or port 68` on my Kali VM, which didn't work because Kali's card is eth0, and it isn't connected to em2, as it's on attacker-net and not company-net. That was silly of me.
+
+<img src="images/image4.png" width="600" alt="tcpdump on Kali: em2 no such device" />
+
+So I ran it again on OPNsense, which is connected to the Ubuntu server, the internet and the attacker. It showed the following:
+
+<img src="images/image5.png" width="600" alt="tcpdump on OPNsense em2: DHCP requests from Ubuntu, no reply" />
+
+Every line said:
+
+```
+0.0.0.0.68 > 255.255.255.255.67: BOOTP/DHCP, Request from 08:00:27:2e:16:95
+```
+
+0.0.0.0 meant that Ubuntu had no IP address. 255.255.255.255.67 meant that it was broadcasting, asking for a DHCP server. However, there was no reply. The request from 08:00:27:2e:16:95 suggested that Ubuntu was infact reaching the fireawll, 08:00:27:2e:16:95 is the mac set in the settings on the vm. The problem was with the DHCP server, not answering.
