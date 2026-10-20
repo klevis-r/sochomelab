@@ -44,4 +44,6 @@ Every line said:
 0.0.0.0.68 > 255.255.255.255.67: BOOTP/DHCP, Request from 08:00:27:2e:16:95
 ```
 
-0.0.0.0 meant that Ubuntu had no IP address. 255.255.255.255.67 meant that it was broadcasting, asking for a DHCP server. However, there was no reply. The request from 08:00:27:2e:16:95 suggested that Ubuntu was infact reaching the fireawll, 08:00:27:2e:16:95 is the mac set in the settings on the vm. The problem was with the DHCP server, not answering.
+0.0.0.0 meant that Ubuntu had no IP address. 255.255.255.255.67 meant that it was broadcasting, asking for a DHCP server. However, there was no reply.
+
+The requests came from 08:00:27:2e:16:95, which is the MAC address shown in the Ubuntu VM's network settings. That proved Ubuntu's requests were in fact reaching the firewall, so the network was fine. The problem was the DHCP server not answering.
