@@ -25,10 +25,9 @@ Everything runs in VirtualBox on a Linux Mint laptop.
 - Setting up network segmentation with a firewall
 - Troubleshooting DHCP and routing
 - Capturing and reading traffic with tcpdump
-- Writing and ordering firewall rules
 - Linux command line
 
 ## Next
-
+- Lab 03: firewall rules between attacker-net and company-net
 - Lab 04: Wazuh SIEM to collect and alert on logs
 - Lab 05: detecting an SSH brute-force attack with a Python script
