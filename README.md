@@ -18,8 +18,6 @@ Everything runs in VirtualBox on a Linux Mint laptop.
 |---|---|
 | [Lab 01](lab-01/) | Installed OPNsense and built the segmented network. Fixed interfaces assigned the wrong way round, and a DHCP problem I traced with tcpdump. |
 | [Lab 02](lab-02/) | Connected the Ubuntu server to company-net and fixed DHCP not being served on OPT1. |
-| [Lab 03](lab-03/) | Wrote firewall rules to block attacker-net from reaching company-net, and fixed a disabled WAN interface. |
-
 ## Skills so far
 
 - Setting up network segmentation with a firewall
