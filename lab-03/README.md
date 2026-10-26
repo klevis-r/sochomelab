@@ -131,4 +131,4 @@ After pinging Ubuntu from Kali again, three red lines showed up, one for each pi
 
 ## Next
 
-Lab 03b: only allow what's needed instead of blocking everything. I'll put a web server on Ubuntu, allow attacker-net to reach it on port 443 only, and prove the website works while ping and SSH are still blocked.
+Lab 03b: only allow what's needed instead of blocking everything. I'll put a web server on Ubuntu, allow attacker-net to reach it on port 443 only (https), and prove the website works while ping and SSH are still blocked.
