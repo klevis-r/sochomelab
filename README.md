@@ -19,6 +19,7 @@ Everything runs in VirtualBox on a Linux Mint laptop.
 | [Lab 01](lab-01/) | Installed OPNsense and built the segmented network. Fixed interfaces assigned the wrong way round, and a DHCP problem I traced with tcpdump. |
 | [Lab 02](lab-02/) | Connected the Ubuntu server to company-net and fixed DHCP not being served on OPT1. |
 | [Lab 03](lab-03/) | Wrote firewall rules to block attacker-net from reaching company-net, and proved it with ping tests and the firewall log. |
+| [Lab 03b](lab-03b/) | Least privilege: allowed only HTTPS (port 443) from LAN to the company server, placed above the block rule so everything else stays blocked. |
 
 ## Skills so far
 
@@ -29,6 +30,5 @@ Everything runs in VirtualBox on a Linux Mint laptop.
 - Linux command line
 
 ## Next
-- Lab 03b: least privilege, allow only HTTPS to the company server
 - Lab 04: Wazuh SIEM to collect and alert on logs
 - Lab 05: detecting an SSH brute-force attack with a Python script
