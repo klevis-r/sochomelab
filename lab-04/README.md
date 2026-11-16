@@ -61,7 +61,7 @@ Its MAC address is 08:00:27:8A:6B:FA, which later shows up in OPNsense's DHCP le
 - **Server name:** `wazuh-server01`. It has to be different from company-srv01, because every log is labelled with a hostname. If two machines had the same name, I wouldn't be able to tell which alert came from which server.
 - Ticked **Install OpenSSH server** and skipped the extra snaps.
 
-At the end, the installer asked me to remove the installation medium. In the VM, I went to Devices → Optical Drives → Remove disk from virtual drive. If I don't do this, the VM can boot back into the installer when it restarts.
+At the end, the installer asked me to remove the installation medium. In the VM, I went to Devices -> Optical Drives -> Remove disk from virtual drive. If I don't do this, the VM can boot back into the installer when it restarts.
 
 The VM showed **Failed unmounting cdrom.mount**.
 
@@ -87,7 +87,7 @@ ping -c 4 google.com
 
 ## Can the attacker reach the SIEM?
 
-Before testing, I predicted that Kali wouldn't be able to reach Wazuh at all. My only LAN → company-net rule lets Kali reach **company-srv01 (.161) on port 443 (HTTPS)**, and everything else is blocked by default.
+Before testing, I predicted that Kali wouldn't be able to reach Wazuh at all. My only LAN -> company-net rule lets Kali reach **company-srv01 (.161) on port 443 (HTTPS)**, and everything else is blocked by default.
 
 On Kali, I ran:
 
@@ -188,7 +188,7 @@ A **lease** is when a DHCP server lends a machine an IP from its pool for a set 
 
 That's why I used a **reservation** instead: whenever that MAC address asks, it always gets the same IP. I chose this over setting the IP by hand on Ubuntu because it keeps every IP in one place (OPNsense). If something is misconfigured, I know to check OPNsense first. OPNsense is also the DHCP server, so it knows never to give .130 to any other machine.
 
-On Kali, I opened OPNsense and went to **Services → Dnsmasq DNS & DHCP → Leases**. I found wazuh-server01's row and clicked **+** in the Command column. This opened a host override already filled in with the IP **192.168.20.130** and the hardware (MAC) address **08:00:27:8a:6b:fa**, which is how DHCP knows which device gets the address. I clicked **Save**, then **Apply**. Saving alone does nothing until you apply it.
+On Kali, I opened OPNsense and went to **Services -> Dnsmasq DNS & DHCP -> Leases**. I found wazuh-server01's row and clicked **+** in the Command column. This opened a host override already filled in with the IP **192.168.20.130** and the hardware (MAC) address **08:00:27:8a:6b:fa**, which is how DHCP knows which device gets the address. I clicked **Save**, then **Apply**. Saving alone does nothing until you apply it.
 
 <img src="images/image16.png" width="600" alt="Dnsmasq Hosts: wazuh-server01 reserved to 192.168.20.130" />
 
