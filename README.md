@@ -4,7 +4,7 @@ A home lab I'm building to learn how networks are attacked, defended and monitor
 
 ## Setup
 
-Everything runs in VirtualBox on a Linux Mint laptop.
+Everything runs in VirtualBox on my laptop.
 
 | Machine | Role | Network |
 |---|---|---|
