@@ -24,6 +24,7 @@ Everything runs in VirtualBox on my laptop.
 | [Lab 03b](lab-03b/) | Least privilege: allowed only HTTPS (port 443) from LAN to the company server, placed above the block rule so everything else stays blocked. |
 | [Lab 04](lab-04/) | Built a Wazuh SIEM server on company-net: right Ubuntu version, extended the disk with LVM, changed the leaked admin password safely, and reserved its IP in OPNsense. Proved Kali can't reach it. |
 | [Lab 04b](lab-04b/) | Built a separate analyst network and a Lubuntu analyst PC. One logged rule lets it reach only Wazuh on HTTPS (/32), with no internet, which I proved with DNS and direct IP tests in Live View. Also fixed a hole that let Kali reach company-net. |
+| [Lab 05](lab-05/) | Patched company-srv01 (proved the new kernel was running), installed a Wazuh agent on it and got it Active. Then tested detection: failed SSH logins raised level 5 alerts, and a burst of them fired a level 10 brute-force alert tagged MITRE T1110. |
 
 ## Skills so far
 
@@ -35,7 +36,9 @@ Everything runs in VirtualBox on my laptop.
 - Setting up a SIEM (Wazuh) and managing its passwords safely
 - DHCP reservations and LVM disk management
 - Least-privilege rules, temporary rules with a backout, and checking them in the firewall's Live View
+- Patching Linux servers and installing Wazuh agents with systemd
+- Reading Wazuh alerts: rule levels, filters, correlation rules and MITRE ATT&CK mapping
 
 ## Next
-- Lab 05: connect company-srv01 to Wazuh and watch its logs arrive
+- Lab 05b: a real SSH brute force from Kali against company-srv01, detected in Wazuh with Kali's IP
 - Later: detecting an SSH brute-force attack with a Python script
